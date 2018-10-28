@@ -2,8 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import rt from './router/index'
-import store from './state/index'
+import router from './router/index'
 
 
 Vue.config.productionTip = false
@@ -13,8 +12,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router: rt,
-  store,
+  router,
   components: {App},
   template: '<App/>'
 })

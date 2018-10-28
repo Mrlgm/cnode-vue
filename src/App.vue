@@ -1,33 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
-    <list/>
+<Header></Header>
   </div>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld'
-  import HelloEarth from './components/HelloWorld'
-  import list from './components/list'
+import Header from './components/Header'
 
   export default {
     name: 'App',
     components: {
-      HelloWorld,
-      HelloEarth,
-      list
+      Header
     }
   }
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 </style>
