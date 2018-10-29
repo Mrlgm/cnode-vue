@@ -27,7 +27,14 @@
           <!--帖子的分类-->
           <span :class="[{post_good:post.good,put_top:post.top,topicListTab:(post.good!=true && post.top!=true)}]">{{post | topicFormat}}</span>
           <!--标题-->
-          <a class="topicTitle" href="">{{post.title}}</a>
+          <router-link :to ="{
+            name: 'post_content',
+            params:{
+              id:post.id
+            }
+            }">
+            <span class="topicTitle" href="">{{post.title}}</span>
+          </router-link>
           <!--最终回复时间-->
           <span class="lastReply">{{post.last_reply_at|formatDate}}</span>
         </li>
@@ -54,7 +61,6 @@
           .then((res) => {
             this.isLoading = false
             this.posts = res.data.data
-            console.log(this.posts)
           })
           .catch((err) => {
             //处理返回失败后的问题
@@ -83,7 +89,8 @@
     color: #80bd01;
 
   }
-  .topBar>span:first-child{
+
+  .topBar > span:first-child {
     background-color: #80bd01;
     color: #fff;
     padding: 1px 4px;
@@ -142,8 +149,7 @@
     font-size: 12px;
     margin: 2px 4px;
     padding: 3px 4px;
-    line-height: 1em;
-    ;
+    line-height: 1em;;
   }
 
   .topicListTab {
@@ -156,24 +162,23 @@
     line-height: 1em;
   }
 
-  a.topicTitle {
+  span.topicTitle {
     max-width: 70%;
     white-space: nowrap;
     font-size: 16px;
     line-height: 30px;
     color: #333;
-    text-decoration: none;
   }
 
-  a.topicTitle:visited{
+  span.topicTitle:visited {
     color: #333;
   }
 
-  a.topicTitle:hover {
+  span.topicTitle:hover {
     text-decoration: underline;
   }
 
-  .lastReply{
+  .lastReply {
     flex-grow: 1;
     text-align: right;
     min-width: 50px;

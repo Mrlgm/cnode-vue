@@ -52,3 +52,13 @@ Vue.filter('topicFormat', function (post) {
     return '招聘'
   }
 })
+
+Vue.filter('fromFormat', function (post) {
+  if (post.tab == 'ask') {
+    return '问答'
+  } else if (post.tab == 'share') {
+    return '分享'
+  } else {
+    return '招聘'
+  }
+})

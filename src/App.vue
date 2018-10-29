@@ -3,7 +3,7 @@
     <Header></Header>
 
     <div class="main">
-      <PostList></PostList>
+      <router-view name="main"></router-view>
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@
 <script>
   import Header from './components/Header'
   import PostList from './components/PostList'
+
 
   export default {
     name: 'App',
@@ -27,6 +28,7 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+    text-decoration: none;
   }
 
   body {
