@@ -3,7 +3,13 @@
     <Header></Header>
 
     <div class="main">
-      <router-view name="main"></router-view>
+      <div class="slider">
+        <router-view name="slideBar"></router-view>
+      </div>
+      <div class="content">
+        <router-view name="main"></router-view>
+      </div>
+
     </div>
   </div>
 </template>
@@ -40,5 +46,12 @@
     min-width: 960px;
     margin: 15px auto;
     min-height: 400px;
+  }
+  .slider{
+    width: 290px;
+    float: right;
+  }
+  .content{
+    margin-right: 305px;
   }
 </style>

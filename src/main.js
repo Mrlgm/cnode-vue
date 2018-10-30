@@ -62,3 +62,21 @@ Vue.filter('fromFormat', function (post) {
     return '招聘'
   }
 })
+
+
+Vue.filter('titleFormat', function (post) {
+  if(post.length>20){
+    return post.slice(0,20)+'...'
+  }else{
+    return post
+  }
+})
+
+
+Vue.filter('formatTitle', function (post) {
+  if(post.length>30){
+    return post.slice(0,25)+'...'
+  }else{
+    return post
+  }
+})

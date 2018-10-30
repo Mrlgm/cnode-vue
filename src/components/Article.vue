@@ -1,5 +1,5 @@
 <template>
-  <div class="article">
+  <div class="Article">
     <!--如果正在加载显示loading-->
     <div class="loading" v-if="isLoading">
       <img src="../assets/loading.gif">
@@ -19,11 +19,21 @@
         <div class="topBar">{{post.replies.length}} 回复</div>
         <div class="reply_item" v-for="(reply,index) in post.replies">
           <div class="user_avatar">
-            <router-link :to="{name:'user_info'}">
+            <router-link :to="{
+              name:'user_info',
+              params:{
+                name: reply.author.loginname
+              }
+            }">
               <img :src="reply.author.avatar_url" alt="">
             </router-link>
             <div class="user_info">
-              <router-link :to="{name:'user_info'}">
+              <router-link :to="{
+                name:'user_info',
+                params:{
+                  name: reply.author.loginname
+                }
+              }">
                 <span class="loginname">{{reply.author.loginname}}</span>
               </router-link>
               <span class="reply_time">{{index+1}}楼•{{reply.create_at | formatDate}}</span>
@@ -63,6 +73,11 @@
     beforeMount() {
       this.isLoading = true
       this.getArticleData()
+    },
+    watch: {
+      '$route'(to, from) {
+        this.getArticleData()
+      }
     }
   }
 </script>
@@ -120,7 +135,7 @@
     border-radius: 3px;
   }
 
-  .user_avatar .user_info{
+  .user_avatar .user_info {
     margin-left: 10px;
   }
 

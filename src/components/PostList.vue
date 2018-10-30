@@ -30,10 +30,11 @@
           <router-link :to ="{
             name: 'post_content',
             params:{
-              id:post.id
+              id:post.id,
+              name:post.author.loginname
             }
             }">
-            <span class="topicTitle" href="">{{post.title}}</span>
+            <span class="topicTitle" href="">{{post.title | formatTitle}}</span>
           </router-link>
           <!--最终回复时间-->
           <span class="lastReply">{{post.last_reply_at|formatDate}}</span>
