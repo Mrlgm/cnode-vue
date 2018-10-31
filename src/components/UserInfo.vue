@@ -1,9 +1,7 @@
 <template>
   <div class="UserInfo">
     <!--如果正在加载显示loading-->
-    <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif">
-    </div>
+    <div class="loading" v-if="isLoading"></div>
     <div class="userInformation">
       <div class="user">
         <div class="topBar"><a href="/">主页</a> <span>/</span></div>
@@ -105,6 +103,10 @@
     color: #444;
     font-size: 14px;
     border-radius: 3px 3px 0 0;
+  }
+
+  .topBar a{
+    color: #80bd01;
   }
 
   .createTopics,

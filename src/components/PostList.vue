@@ -1,9 +1,7 @@
 <template>
   <div class="postList">
     <!--在数据未返回的时候显示loading-->
-    <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif">
-    </div>
+    <div class="loading" v-if="isLoading"></div>
     <!--代表帖子列表-->
     <div class="topBar">
       <span @click="changeTab('')" :class="{active:tabString===''}">全部</span>

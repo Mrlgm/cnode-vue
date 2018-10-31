@@ -2,7 +2,6 @@
   <div class="Article">
     <!--如果正在加载显示loading-->
     <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif">
     </div>
     <div v-else>
       <div class="topic_header">
