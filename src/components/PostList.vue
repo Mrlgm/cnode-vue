@@ -27,7 +27,7 @@
           <!--帖子的分类-->
           <span :class="[{post_good:post.good,put_top:post.top,topicListTab:(post.good!=true && post.top!=true)}]">{{post | topicFormat}}</span>
           <!--标题-->
-          <router-link :to ="{
+          <router-link :to="{
             name: 'post_content',
             params:{
               id:post.id,
@@ -39,25 +39,36 @@
           <!--最终回复时间-->
           <span class="lastReply">{{post.last_reply_at|formatDate}}</span>
         </li>
+        <div>
+          <Pagination @handleList="renderList"></Pagination>
+        </div>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+  import Pagination from './Pagination'
+
   export default {
     name: "PostList",
     data() {
       return {
         isLoading: false,
-        posts: []//代表页面的列表数组
+        posts: [],//代表页面的列表数组
+        postPage: 1
       }
+    },
+    components: {
+      Pagination
     },
     methods: {
       getData() {
         this.$axios.get('https://cnodejs.org/api/v1/topics', {
-          page: 1,
-          limit: 20
+          params: {
+            page: this.postPage,
+            limit: 20
+          }
         })
           .then((res) => {
             this.isLoading = false
@@ -67,6 +78,10 @@
             //处理返回失败后的问题
             console.log(err)
           })
+      },
+      renderList(value) {
+        this.postPage = value
+        this.getData()
       }
     },
     computed: {},

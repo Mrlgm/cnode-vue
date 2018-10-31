@@ -5,17 +5,10 @@ import App from './App'
 import router from './router/index'
 import Axios from 'axios'
 
+
 Vue.prototype.$axios = Axios
 Vue.config.productionTip = false
 
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: {App},
-  template: '<App/>'
-})
 Vue.filter('formatDate', function (str) {
   if (!str) return ''
   var date = new Date(str)
@@ -38,6 +31,15 @@ Vue.filter('formatDate', function (str) {
     return parseInt((time / 31536000000)) + '年前'
   }
 })
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: {App},
+  template: '<App/>'
+})
+
 //处理显示板块的主题
 Vue.filter('topicFormat', function (post) {
   if (post.top == true) {
@@ -65,18 +67,18 @@ Vue.filter('fromFormat', function (post) {
 
 
 Vue.filter('titleFormat', function (post) {
-  if(post.length>20){
-    return post.slice(0,20)+'...'
-  }else{
+  if (post.length > 18) {
+    return post.slice(0, 18) + '...'
+  } else {
     return post
   }
 })
 
 
 Vue.filter('formatTitle', function (post) {
-  if(post.length>30){
-    return post.slice(0,25)+'...'
-  }else{
+  if (post.length > 30) {
+    return post.slice(0, 31) + '...'
+  } else {
     return post
   }
 })

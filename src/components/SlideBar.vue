@@ -74,7 +74,6 @@
           .then((res) => {
             if (res.data.success == true) {
               this.userInfo = res.data.data
-              console.log(this.userInfo)
             }
           })
           .catch((err) => {
@@ -96,6 +95,11 @@
     },
     beforeMount() {
       this.getUserData()
+    },
+    watch: {
+      '$route'(to, from) {
+        this.getUserData()
+      }
     }
   }
 </script>
@@ -128,6 +132,7 @@
     width: 48px;
     height: 48px;
     margin-right: 6.5px;
+    border-radius: 3px;
   }
 
   .author_score {

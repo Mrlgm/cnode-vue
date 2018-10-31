@@ -62,7 +62,6 @@
             if (res.data.success == true) {
               this.isLoading = false
               this.post = res.data.data
-              console.log(res)
             }
           })
           .catch((err) => {
