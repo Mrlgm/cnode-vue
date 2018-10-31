@@ -82,3 +82,12 @@ Vue.filter('formatTitle', function (post) {
     return post
   }
 })
+
+Vue.filter('formatVisitCount', function (post) {
+
+  if (`${post}`.length > 5) {
+    return `${post}`.slice(0, `${post}`.length-4) + 'w'
+  } else {
+    return post
+  }
+})

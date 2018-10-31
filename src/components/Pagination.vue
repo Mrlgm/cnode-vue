@@ -28,7 +28,6 @@
     },
     methods: {
       changeBtn(page) {
-        console.log(page.target)
         //点击上一页下一页
         if (typeof page != "number") {
           if (page == '...') {

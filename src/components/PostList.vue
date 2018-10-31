@@ -20,7 +20,7 @@
             <!--回复/浏览-->
             <span class="reply_count">{{post.reply_count}}</span>
             <span class="division">/</span>
-            <span class="visit_count">{{post.visit_count}}</span>
+            <span class="visit_count">{{post.visit_count | formatVisitCount}}</span>
           </span>
           <!--帖子的分类-->
           <span :class="[{post_good:post.good,put_top:post.top,topicListTab:(post.good!=true && post.top!=true)}]">{{post | topicFormat}}</span>
