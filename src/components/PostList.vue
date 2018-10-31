@@ -6,11 +6,11 @@
     </div>
     <!--代表帖子列表-->
     <div class="topBar">
-      <span>全部</span>
-      <span>精华</span>
-      <span>分享</span>
-      <span>问答</span>
-      <span>招聘</span>
+      <span @click="changeTab('')" :class="{active:tabString===''}">全部</span>
+      <span @click="changeTab('good')" :class="{active:tabString==='good'}">精华</span>
+      <span @click="changeTab('share')" :class="{active:tabString==='share'}">分享</span>
+      <span @click="changeTab('ask')" :class="{active:tabString==='ask'}">问答</span>
+      <span @click="changeTab('job')" :class="{active:tabString==='job'}">招聘</span>
       <span>客户端测试</span>
     </div>
     <div>
@@ -56,7 +56,8 @@
       return {
         isLoading: false,
         posts: [],//代表页面的列表数组
-        postPage: 1
+        postPage: 1,
+        tabString: ''
       }
     },
     components: {
@@ -67,7 +68,8 @@
         this.$axios.get('https://cnodejs.org/api/v1/topics', {
           params: {
             page: this.postPage,
-            limit: 20
+            limit: 20,
+            tab: this.tabString
           }
         })
           .then((res) => {
@@ -81,6 +83,10 @@
       },
       renderList(value) {
         this.postPage = value
+        this.getData()
+      },
+      changeTab(value){
+        this.tabString = value
         this.getData()
       }
     },
@@ -103,17 +109,17 @@
   .topBar > span {
     margin: 0 10px;
     color: #80bd01;
-
+    cursor:pointer;
   }
 
-  .topBar > span:first-child {
+  .topBar > span.active {
     background-color: #80bd01;
     color: #fff;
     padding: 1px 4px;
     border-radius: 3px;
   }
 
-  .topBar > span:not(:first-child):hover {
+  .topBar > span:not(.active):hover {
     color: #005580;
   }
 
